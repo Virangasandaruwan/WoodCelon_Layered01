@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="780.0" prefWidth="1274.0" style="-fx-background-radius: 25; -fx-border-radius: 25;" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="lk.ijse.woodceylon.controller.DashboardController">
+    <stylesheets>
+        <URL value="@/styles/dashboard.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="780.0" prefWidth="1274.0" style="-fx-background-radius: 25; -fx-border-radius: 25;">
+         <children>
+            <VBox layoutX="14.0" layoutY="20.0" prefHeight="760.0" prefWidth="1268.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox prefHeight="210.0" prefWidth="1208.0" style="-fx-background-radius: 25; -fx-border-radius: 25; -fx-background-color: #66cccc;">
+                     <VBox.margin>
+                        <Insets left="30.0" right="30.0" top="30.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label prefHeight="126.0" prefWidth="444.0" text="Wellcome to Business ...">
+                           <font>
+                              <Font name="Calibri Bold" size="30.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="30.0" top="15.0" />
+                           </HBox.margin>
+                        </Label>
+                        <AnchorPane prefHeight="210.0" prefWidth="706.0">
+                           <children>
+                              <Label fx:id="lblDate" layoutX="387.0" layoutY="14.0" prefHeight="52.0" prefWidth="187.0" text="-">
+                                 <font>
+                                    <Font name="System Bold" size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblTime" layoutX="393.0" layoutY="66.0" text="-">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <ImageView fitHeight="215.0" fitWidth="295.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/16503838_37Z_2106.w009.n001.1A.p15.1-removebg-preview.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                     <effect>
+                        <DropShadow height="9.3" radius="1.8250000000000002" width="0.0" />
+                     </effect>
+                  </HBox>
+                  <HBox prefHeight="522.0" prefWidth="1269.0">
+                     <children>
+                        <VBox prefHeight="521.0" prefWidth="834.0" style="-fx-background-radius: 25; -fx-border-radius: 25; -fx-background-color: #66cccc;">
+                           <HBox.margin>
+                              <Insets bottom="20.0" left="30.0" right="15.0" top="30.0" />
+                           </HBox.margin>
+                           <children>
+                              <HBox prefHeight="245.0" prefWidth="785.0">
+                                 <children>
+                                    <Pane prefHeight="84.0" prefWidth="122.0" style="-fx-background-color: #b2e6ce; -fx-background-radius: 25; -fx-border-radius: 25;">
+                                       <HBox.margin>
+                                          <Insets bottom="8.0" left="15.0" right="10.0" top="8.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <Label layoutX="43.0" layoutY="23.0" text="Top" textFill="#3c564b">
+                                             <font>
+                                                <Font name="Bookman Old Style Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="29.0" layoutY="51.0" text="Selling" textFill="#3c564b">
+                                             <font>
+                                                <Font name="Bookman Old Style Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="39.0" layoutY="78.0" text="Item" textFill="#3c564b">
+                                             <font>
+                                                <Font name="Bookman Old Style Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblTopItem" layoutX="39.0" layoutY="150.0" text="-" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="Calibri" size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="18.0" layoutY="18.0" prefHeight="84.0" prefWidth="122.0" style="-fx-background-color: #b2e6ce; -fx-background-radius: 25; -fx-border-radius: 25;">
+                                       <HBox.margin>
+                                          <Insets bottom="8.0" left="10.0" right="10.0" top="8.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <Label layoutX="16.0" layoutY="25.0" text="Customer">
+                                             <font>
+                                                <Font name="Bookman Old Style Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="33.0" layoutY="46.0" text="Count">
+                                             <font>
+                                                <Font name="Bookman Old Style Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblCustomerCount" layoutX="47.0" layoutY="176.0" text="-">
+                                             <font>
+                                                <Font name="System Bold" size="25.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane prefHeight="84.0" prefWidth="122.0" style="-fx-background-color: #b2e6ce; -fx-background-radius: 25; -fx-border-radius: 25;">
+                                       <HBox.margin>
+                                          <Insets bottom="8.0" left="10.0" right="10.0" top="8.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <ImageView fitHeight="52.0" fitWidth="122.0" layoutX="13.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/bottom-horizontal-seamless-vector-illustration-260nw-2594860769-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label layoutX="16.0" layoutY="135.0" text="Suppliers">
+                                             <font>
+                                                <Font name="System Bold" size="22.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblSupplierCount" layoutX="59.0" layoutY="58.0" text="-">
+                                             <font>
+                                                <Font size="25.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane prefHeight="259.0" prefWidth="326.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 25; -fx-border-radius: 25;">
+                                       <HBox.margin>
+                                          <Insets bottom="8.0" left="10.0" right="10.0" top="8.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <PieChart fx:id="pieChart" layoutX="5.0" prefHeight="230.0" prefWidth="315.0" />
+                                       </children>
+                                    </Pane>
+                                 </children>
+                                 <effect>
+                                    <DropShadow height="18.66" radius="4.165" width="0.0" />
+                                 </effect>
+                              </HBox>
+                              <VBox prefHeight="90.0" prefWidth="712.0" style="-fx-background-radius: 25; -fx-border-radius: 25; -fx-background-color: #e5e5ea;">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 25; -fx-border-radius: 25;" styleClass="white-form" stylesheets="@../../../css/login.css">
+                                       <children>
+                                          <Label layoutX="25.0" layoutY="34.0" text="Total earning of this business.." textFill="#131313">
+                                             <font>
+                                                <Font name="Bookman Old Style Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblTotalEarnings" layoutX="580.0" layoutY="25.0" text="-" textFill="#365053">
+                                             <font>
+                                                <Font name="System Bold" size="28.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="90.0" prefWidth="600.0" style="-fx-background-radius: 25; -fx-border-radius: 25; -fx-background-color: #365053;">
+                                 <VBox.margin>
+                                    <Insets left="15.0" right="15.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 25; -fx-border-radius: 25; -fx-background-color: #365053;">
+                                       <children>
+                                          <Label layoutX="34.0" layoutY="34.0" text="Total Items Count of Sold ..." textFill="WHITE">
+                                             <font>
+                                                <Font name="Bookman Old Style Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblItemsSold" layoutX="581.0" layoutY="34.0" text="-" textFill="WHITE">
+                                             <font>
+                                                <Font size="28.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <effect>
+                              <DropShadow height="4.62" radius="0.655" width="0.0" />
+                           </effect>
+                        </VBox>
+                        <VBox prefHeight="521.0" prefWidth="442.0" style="-fx-background-radius: 25; -fx-border-radius: 25; -fx-background-color: #66cccc;">
+                           <HBox.margin>
+                              <Insets bottom="20.0" left="15.0" right="30.0" top="30.0" />
+                           </HBox.margin>
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="123.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../images/6742638_3349661-removebg-preview.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="Low Stock Allerts...!">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="20.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <ListView fx:id="lstLowStock" prefHeight="309.0" prefWidth="393.0" style="-fx-background-radius: 25; -fx-border-radius: 25;">
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </VBox.margin>
+                              </ListView>
+                              <Button mnemonicParsing="false" onAction="#handlePrintInventoryReport" prefHeight="26.0" prefWidth="374.0" style="-fx-background-radius: 0 0 25px 25px; -fx-border-radius: 0 0 25px 25px; -fx-background-color: #365053;" text="Print Enventory Report" textFill="#faf7f7">
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="10.0" top="4.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <effect>
+            <DropShadow height="0.0" radius="0.0" width="0.0" />
+         </effect>
+      </AnchorPane>
+   </children>
+</AnchorPane>

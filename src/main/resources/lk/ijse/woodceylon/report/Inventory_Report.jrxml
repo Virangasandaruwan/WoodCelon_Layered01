@@ -1,0 +1,83 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="Inventory_Report" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="59e12e4a-00e9-4b33-b9a8-9e4e92db850f">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+	<query language="SQL"><![CDATA[SELECT 
+    Product_ID, 
+    Name, 
+    Price, 
+    Qty, 
+    (Price * Qty) AS Sub_Total 
+FROM Product 
+ORDER BY Qty ASC;]]></query>
+	<field name="Product_ID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Product_ID"/>
+		<property name="com.jaspersoft.studio.field.label" value="Product_ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Product"/>
+	</field>
+	<field name="Name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Name"/>
+		<property name="com.jaspersoft.studio.field.label" value="Name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Product"/>
+	</field>
+	<field name="Price" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Price"/>
+		<property name="com.jaspersoft.studio.field.label" value="Price"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Product"/>
+	</field>
+	<field name="Qty" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Qty"/>
+		<property name="com.jaspersoft.studio.field.label" value="Qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Product"/>
+	</field>
+	<field name="Sub_Total" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Sub_Total"/>
+		<property name="com.jaspersoft.studio.field.label" value="Sub_Total"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="staticText" uuid="a3ff541b-10d7-4f93-9e98-a4b814366be3" x="190" y="10" width="183" height="50" forecolor="#FC130F" fontSize="25.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[WoodCeylon]]></text>
+		</element>
+	</title>
+	<pageHeader height="41" splitType="Stretch">
+		<element kind="staticText" uuid="c7b6d4df-d3ab-42ab-a3cf-59d71dd7f9d4" x="-10" y="10" width="100" height="30" hTextAlign="Center">
+			<text><![CDATA[ProductID]]></text>
+		</element>
+		<element kind="staticText" uuid="7e57ac87-0706-4d56-9f30-63af8d4aa2ad" x="110" y="10" width="100" height="30">
+			<text><![CDATA[Name]]></text>
+		</element>
+		<element kind="staticText" uuid="8eaf5c4d-aaa8-4e09-88b6-796d3a585da2" x="227" y="5" width="100" height="30">
+			<text><![CDATA[Price]]></text>
+		</element>
+		<element kind="staticText" uuid="bb8981a0-0a6a-4dd5-be66-dd5f7bd18c87" x="331" y="10" width="100" height="30">
+			<text><![CDATA[Qty]]></text>
+		</element>
+		<element kind="staticText" uuid="4025b0c7-ed21-419b-9d65-66eb47d90cbc" x="450" y="10" width="100" height="30">
+			<text><![CDATA[Total]]></text>
+		</element>
+	</pageHeader>
+	<columnHeader height="31" splitType="Stretch"/>
+	<detail>
+		<band height="49" splitType="Stretch">
+			<element kind="textField" uuid="6ca7ab16-b2bf-4d47-a895-bc001fde9904" x="-11" y="10" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{Product_ID}]]></expression>
+			</element>
+			<element kind="textField" uuid="1fcfffa1-c5c9-48d6-bca7-12f885698f89" x="110" y="10" width="100" height="30">
+				<expression><![CDATA[$F{Name}]]></expression>
+			</element>
+			<element kind="textField" uuid="5608febf-5960-4686-ba68-90eb69be57ab" x="231" y="10" width="100" height="30">
+				<expression><![CDATA[$F{Price}]]></expression>
+			</element>
+			<element kind="textField" uuid="6a359a80-5616-4a55-8965-a1016027f90e" x="340" y="10" width="100" height="30">
+				<expression><![CDATA[$F{Qty}]]></expression>
+			</element>
+			<element kind="textField" uuid="361e54ab-1b84-443a-a15b-c06ce29c26bd" x="460" y="10" width="100" height="30">
+				<expression><![CDATA[$F{Sub_Total}]]></expression>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

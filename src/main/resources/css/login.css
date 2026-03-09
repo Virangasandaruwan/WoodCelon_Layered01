@@ -1,0 +1,84 @@
+/*
+ * Empty Stylesheet file.
+ 
+
+.mainFxmlClass {
+
+}*/
+
+
+.gradient{
+    -fx-background-color: linear-gradient(to bottom right, #0f6789, #149494);
+}
+
+.white-form{
+    -fx-background-color: #fff;
+}
+
+.head-label{
+    -fx-border-color: #149494;
+    -fx-border-width: 0 0 0 3px;
+    -fx-padding: 0 0 0 5px;
+}
+
+.login-btn{
+    -fx-background-color: linear-gradient(to bottom right, #098c53, #246861);
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+
+.login-btn:hover{
+    -fx-background-color: linear-gradient(to bottom right, #0fb565, #399a8f);
+}
+
+.textfield{
+    -fx-background-color: transparent;
+    -fx-border-color: linear-gradient(to bottom right, #0f6789, #286155);
+    -fx-border-width: 1px;
+}
+
+.textfield:focused{
+    -fx-border-width: 2px;
+}
+
+.create-btn{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-border-color: #fff;
+    -fx-border-width: 3px;
+}
+
+.create-btn:hover{
+    -fx-background-color: #fff;
+    -fx-text-fill: #000;
+}
+
+.logout-btn{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-border-color: #fff;
+    -fx-border-width: 1px;
+}
+
+.logout-btn:hover{
+    -fx-background-color: #FF1E1E;
+    -fx-text-fill: #FFFFFF;
+}
+
+.pane_1{
+    -fx-background-color: #fff;
+    -fx-border-width: 1px 1px 1px 1px; 
+    -fx-border-radius:0, 20px, 20px, 0;
+    -fx-background-radius: 0, 20px, 20px, 0;
+    -fx-border-style: solid;
+    -fx-border-colour: transparent; 
+}
+
+
+
+
+

@@ -1,0 +1,92 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="ItemReport" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6601c298-2b0d-4ee4-96ee-9f4034f6fc4c">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+	<query language="SQL"><![CDATA[SELECT*FROM Product]]></query>
+	<field name="Product_ID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Product_ID"/>
+		<property name="com.jaspersoft.studio.field.label" value="Product_ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Product"/>
+	</field>
+	<field name="Name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Name"/>
+		<property name="com.jaspersoft.studio.field.label" value="Name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Product"/>
+	</field>
+	<field name="Description" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Description"/>
+		<property name="com.jaspersoft.studio.field.label" value="Description"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Product"/>
+	</field>
+	<field name="Price" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Price"/>
+		<property name="com.jaspersoft.studio.field.label" value="Price"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Product"/>
+	</field>
+	<field name="Supplier_ID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Supplier_ID"/>
+		<property name="com.jaspersoft.studio.field.label" value="Supplier_ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Product"/>
+	</field>
+	<group name="Product_ID">
+		<expression><![CDATA[$F{Product_ID}]]></expression>
+	</group>
+	<group name="Name">
+		<expression><![CDATA[$F{Name}]]></expression>
+	</group>
+	<group name="Description">
+		<expression><![CDATA[$F{Description}]]></expression>
+	</group>
+	<group name="Price">
+		<expression><![CDATA[$F{Price}]]></expression>
+	</group>
+	<group name="Supplier_ID">
+		<expression><![CDATA[$F{Supplier_ID}]]></expression>
+	</group>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="staticText" uuid="3cbc92ef-240f-4c6a-90b8-466bb619231b" x="130" y="10" width="270" height="51" forecolor="#FC110D" fontSize="30.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[WoodCeylon]]></text>
+		</element>
+	</title>
+	<pageHeader height="49" splitType="Stretch">
+		<element kind="staticText" uuid="fe930ed4-49b7-462f-ab2d-bb04417cd0c3" x="-10" y="0" width="100" height="30" hTextAlign="Center">
+			<text><![CDATA[Product ID]]></text>
+		</element>
+		<element kind="staticText" uuid="57f9dd65-99a6-45ed-b425-d3127095aaa0" x="110" y="0" width="100" height="30">
+			<text><![CDATA[Product Name]]></text>
+		</element>
+		<element kind="staticText" uuid="02bf39f7-c049-4f6d-b87a-8de3953b5f89" x="230" y="0" width="100" height="30" hTextAlign="Center">
+			<text><![CDATA[Description]]></text>
+		</element>
+		<element kind="staticText" uuid="bd9ab8fd-a1da-49a0-aa8c-aaf1d36db331" x="350" y="0" width="100" height="30" hTextAlign="Center">
+			<text><![CDATA[Price]]></text>
+		</element>
+		<element kind="staticText" uuid="67fcf900-a0ac-435a-a14b-9fed0a65e97c" x="470" y="0" width="100" height="30">
+			<text><![CDATA[Supplier ID]]></text>
+		</element>
+	</pageHeader>
+	<columnHeader height="12" splitType="Stretch"/>
+	<detail>
+		<band height="37" splitType="Stretch">
+			<element kind="textField" uuid="ea5de4cb-9fe7-491d-b61d-4fc390bbaebe" x="-10" y="0" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{Product_ID}]]></expression>
+			</element>
+			<element kind="textField" uuid="ac70fef9-8b70-4dfe-bb4c-60035d23460e" x="110" y="0" width="100" height="30">
+				<expression><![CDATA[$F{Name}]]></expression>
+			</element>
+			<element kind="textField" uuid="8bbe1b56-d419-4c60-907b-08f178d06b9b" x="230" y="0" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{Description}]]></expression>
+			</element>
+			<element kind="textField" uuid="123343fd-899a-43ec-ba59-d9ddd9a87cab" x="350" y="0" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{Price}]]></expression>
+			</element>
+			<element kind="textField" uuid="b957e183-7696-4d78-b25b-6e00f6326a60" x="470" y="0" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{Supplier_ID}]]></expression>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

@@ -1,0 +1,77 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="SupplierReport" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c3e33899-05ff-4b9b-a493-165960b20e5e">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+	<query language="SQL"><![CDATA[SELECT*FROM Supplier]]></query>
+	<field name="Supplier_ID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Supplier_ID"/>
+		<property name="com.jaspersoft.studio.field.label" value="Supplier_ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Supplier"/>
+	</field>
+	<field name="Name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Name"/>
+		<property name="com.jaspersoft.studio.field.label" value="Name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Supplier"/>
+	</field>
+	<field name="Phone" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Phone"/>
+		<property name="com.jaspersoft.studio.field.label" value="Phone"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Supplier"/>
+	</field>
+	<field name="Email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Email"/>
+		<property name="com.jaspersoft.studio.field.label" value="Email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Supplier"/>
+	</field>
+	<field name="Address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Address"/>
+		<property name="com.jaspersoft.studio.field.label" value="Address"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Supplier"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="staticText" uuid="17780029-ce4d-4539-86da-ddd4cc9ac68e" x="130" y="10" width="270" height="51" forecolor="#FC110D" fontSize="30.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[WoodCeylon]]></text>
+		</element>
+	</title>
+	<pageHeader height="35" splitType="Stretch">
+		<element kind="staticText" uuid="db35410a-4f08-450e-a121-a9f2d8b751d1" x="-10" y="0" width="100" height="30" hTextAlign="Center">
+			<text><![CDATA[Supplier ID]]></text>
+		</element>
+		<element kind="staticText" uuid="9796fd32-9276-4004-b5da-9a1755cc836f" x="350" y="0" width="100" height="30" hTextAlign="Center">
+			<text><![CDATA[Email]]></text>
+		</element>
+		<element kind="staticText" uuid="9aefa260-944e-45c5-b363-59a0e851a4dd" x="110" y="0" width="100" height="30">
+			<text><![CDATA[Supplier Name]]></text>
+		</element>
+		<element kind="staticText" uuid="62e40f0c-2986-456b-bf18-9702f6d689a8" x="470" y="0" width="100" height="30">
+			<text><![CDATA[Address]]></text>
+		</element>
+		<element kind="staticText" uuid="d4ee1a91-be27-4afb-ba2c-3fa55559b8a5" x="230" y="0" width="100" height="30" hTextAlign="Center">
+			<text><![CDATA[Phone]]></text>
+		</element>
+	</pageHeader>
+	<columnHeader height="12" splitType="Stretch"/>
+	<detail>
+		<band height="42" splitType="Stretch">
+			<element kind="textField" uuid="9fcb2cbf-3757-4769-80cd-b50bb49125ce" x="230" y="0" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{Phone}]]></expression>
+			</element>
+			<element kind="textField" uuid="082f2f09-e90f-42f0-9be2-354125feb883" x="350" y="0" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{Email}]]></expression>
+			</element>
+			<element kind="textField" uuid="8490c07a-498a-4d17-86da-ced0a5f664e1" x="470" y="0" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{Address}]]></expression>
+			</element>
+			<element kind="textField" uuid="9e90d496-ecb4-4fed-a105-4c96df00b82f" x="-10" y="0" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{Supplier_ID}]]></expression>
+			</element>
+			<element kind="textField" uuid="b736baf6-a023-4521-9e99-cfa8ffb25bd3" x="110" y="0" width="100" height="30">
+				<expression><![CDATA[$F{Name}]]></expression>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

@@ -1,0 +1,78 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="CustomerReport" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4de5ddd1-19bf-49a2-a842-fedd662b38e5">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+	<query language="SQL"><![CDATA[SELECT*FROM Customer]]></query>
+	<field name="Customer_ID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Customer_ID"/>
+		<property name="com.jaspersoft.studio.field.label" value="Customer_ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Customer"/>
+	</field>
+	<field name="Name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Name"/>
+		<property name="com.jaspersoft.studio.field.label" value="Name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Customer"/>
+	</field>
+	<field name="Phone" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Phone"/>
+		<property name="com.jaspersoft.studio.field.label" value="Phone"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Customer"/>
+	</field>
+	<field name="Email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Email"/>
+		<property name="com.jaspersoft.studio.field.label" value="Email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Customer"/>
+	</field>
+	<field name="Address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Address"/>
+		<property name="com.jaspersoft.studio.field.label" value="Address"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Customer"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="90" splitType="Stretch">
+		<element kind="staticText" uuid="2b1f9074-cff1-4130-8e0e-b85e6e328a19" x="190" y="31" width="180" height="30" forecolor="#FC110D" fontSize="22.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[WoodCeylon]]></text>
+		</element>
+	</title>
+	<pageHeader height="52" splitType="Stretch">
+		<element kind="staticText" uuid="6eed21ac-2c83-4cb2-ba9b-b96003b76d01" x="0" y="0" width="100" height="30" hTextAlign="Center">
+			<text><![CDATA[ID]]></text>
+		</element>
+		<element kind="staticText" uuid="3b40b800-fffe-46d8-a298-451b4e18fbdb" x="110" y="0" width="100" height="30">
+			<text><![CDATA[Name]]></text>
+		</element>
+		<element kind="staticText" uuid="73b5b343-5d14-4e08-aae2-69e8da731e1c" x="230" y="0" width="100" height="30">
+			<text><![CDATA[Phone]]></text>
+		</element>
+		<element kind="staticText" uuid="87235c95-be80-474c-8b59-21e25480351c" x="360" y="0" width="100" height="30">
+			<text><![CDATA[Email]]></text>
+		</element>
+		<element kind="staticText" uuid="9295c683-d79a-40aa-b510-51436f3de4fc" x="475" y="0" width="100" height="30">
+			<text><![CDATA[Address]]></text>
+		</element>
+		<element kind="line" uuid="c4de27e4-3324-423d-a74d-2e4e2fef7b7b" x="0" y="30" width="560" height="1"/>
+	</pageHeader>
+	<columnHeader height="8" splitType="Stretch"/>
+	<detail>
+		<band height="38" splitType="Stretch">
+			<element kind="textField" uuid="ec64dc4c-d212-4eeb-96c0-6bf5f06fcc6e" x="0" y="0" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{Customer_ID}]]></expression>
+			</element>
+			<element kind="textField" uuid="41b57ad5-c2dc-4375-bb6b-f6eea2e3905a" x="110" y="0" width="100" height="30">
+				<expression><![CDATA[$F{Name}]]></expression>
+			</element>
+			<element kind="textField" uuid="81e71481-2fdd-40d8-8f67-13f957c35206" x="227" y="0" width="100" height="30">
+				<expression><![CDATA[$F{Phone}]]></expression>
+			</element>
+			<element kind="textField" uuid="5739d352-7a91-4aac-84c3-b3c52086abbf" x="360" y="0" width="100" height="30">
+				<expression><![CDATA[$F{Email}]]></expression>
+			</element>
+			<element kind="textField" uuid="42e6aeda-40d6-4dc3-bfba-1e638a4bee64" x="470" y="0" width="100" height="30">
+				<expression><![CDATA[$F{Address}]]></expression>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="55" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

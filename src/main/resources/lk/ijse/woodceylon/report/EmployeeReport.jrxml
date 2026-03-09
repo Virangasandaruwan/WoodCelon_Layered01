@@ -1,0 +1,77 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="EmployeeReport" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="be0d5210-4065-4677-a751-c5fea0393115">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+	<query language="SQL"><![CDATA[SELECT*FROM Employee]]></query>
+	<field name="Employee_ID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Employee_ID"/>
+		<property name="com.jaspersoft.studio.field.label" value="Employee_ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Employee"/>
+	</field>
+	<field name="Name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Name"/>
+		<property name="com.jaspersoft.studio.field.label" value="Name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Employee"/>
+	</field>
+	<field name="Phone" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Phone"/>
+		<property name="com.jaspersoft.studio.field.label" value="Phone"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Employee"/>
+	</field>
+	<field name="Email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Email"/>
+		<property name="com.jaspersoft.studio.field.label" value="Email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Employee"/>
+	</field>
+	<field name="Address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Address"/>
+		<property name="com.jaspersoft.studio.field.label" value="Address"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Employee"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="staticText" uuid="fe7906e3-8c13-449a-8a81-67eb98369c08" x="130" y="10" width="270" height="51" forecolor="#FC110D" fontSize="30.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[WoodCeylon]]></text>
+		</element>
+	</title>
+	<pageHeader height="35" splitType="Stretch">
+		<element kind="staticText" uuid="6175f0dc-84ea-451e-bec4-48a4096a6368" x="230" y="0" width="100" height="30" hTextAlign="Center">
+			<text><![CDATA[Phone]]></text>
+		</element>
+		<element kind="staticText" uuid="bd4d1d5c-cb40-4c54-aa25-5e898b267ee8" x="-10" y="0" width="100" height="30" hTextAlign="Center">
+			<text><![CDATA[Employee ID]]></text>
+		</element>
+		<element kind="staticText" uuid="778ed74c-8364-4eb6-9fa6-f9d842bb1f09" x="470" y="0" width="100" height="30">
+			<text><![CDATA[Address]]></text>
+		</element>
+		<element kind="staticText" uuid="5ca64b39-28dc-4aa5-9e75-30368dc26e22" x="110" y="0" width="100" height="30">
+			<text><![CDATA[Employee Name]]></text>
+		</element>
+		<element kind="staticText" uuid="aaeba713-a16f-491b-9291-65394bf44062" x="350" y="0" width="100" height="30" hTextAlign="Center">
+			<text><![CDATA[Email]]></text>
+		</element>
+	</pageHeader>
+	<columnHeader height="20" splitType="Stretch"/>
+	<detail>
+		<band height="45" splitType="Stretch">
+			<element kind="textField" uuid="1fd20ddd-7351-4606-a391-791443ec0669" x="230" y="0" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{Phone}]]></expression>
+			</element>
+			<element kind="textField" uuid="88d849fb-b049-4c50-b80b-3f748ec8af12" x="470" y="0" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{Address}]]></expression>
+			</element>
+			<element kind="textField" uuid="4f0e93d7-4121-4a8a-b807-ebd93e94e3d9" x="110" y="0" width="100" height="30">
+				<expression><![CDATA[$F{Name}]]></expression>
+			</element>
+			<element kind="textField" uuid="3fd92151-9938-49bc-81f1-8d2a16f8b08e" x="350" y="0" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{Email}]]></expression>
+			</element>
+			<element kind="textField" uuid="e0d4ece9-646f-46c8-97bc-7b438674d832" x="-10" y="0" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{Employee_ID}]]></expression>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>
