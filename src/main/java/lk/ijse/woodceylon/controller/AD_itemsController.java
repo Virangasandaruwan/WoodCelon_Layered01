@@ -1,6 +1,5 @@
 package lk.ijse.woodceylon.controller;
 
-import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,19 +7,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.woodceylon.bo.custom.ProductBO;
 import lk.ijse.woodceylon.dto.ProductDTO;
-import lk.ijse.woodceylon.model.ProductModel;
+//import lk.ijse.woodceylon.model.ProductModel;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
@@ -32,7 +31,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
-import lk.ijse.woodceylon.App;
 
 public class AD_itemsController implements Initializable {
 
@@ -51,7 +49,47 @@ public class AD_itemsController implements Initializable {
     @FXML
     private TableColumn<ProductDTO, Integer> colQty;
 
-    private final ProductModel productModel = new ProductModel();
+    private final ProductBO productBO = new ProductBO() {
+        @Override
+        public String addProduct(ProductDTO dto) throws Exception {
+            return "";
+        }
+
+        @Override
+        public String updateProduct(ProductDTO dto) throws Exception {
+            return "";
+        }
+
+        @Override
+        public String deleteProduct(int id) throws Exception {
+            return "";
+        }
+
+        @Override
+        public ProductDTO searchProduct(int id) throws Exception {
+            return null;
+        }
+
+        @Override
+        public List<ProductDTO> getAllProducts() throws Exception {
+            return List.of();
+        }
+
+        @Override
+        public void printReport() throws Exception {
+
+        }
+
+        @Override
+        public boolean updateStock(int productId, int qtyChange) throws Exception {
+            return false;
+        }
+
+        @Override
+        public List<ProductDTO> getLowStockItems() throws Exception {
+            return List.of();
+        }
+    };
     private final ObservableList<ProductDTO> productList = FXCollections.observableArrayList();
 
     @Override
@@ -88,7 +126,7 @@ public class AD_itemsController implements Initializable {
     private void loadAllProducts() {
         try {
             productList.clear();
-            productList.addAll(productModel.getAllProducts());
+            productList.addAll(productBO.getAllProducts());
             tableProduct.setItems(productList);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Failed to load products: " + e.getMessage()).show();
@@ -108,7 +146,7 @@ public class AD_itemsController implements Initializable {
                     Integer.parseInt(itemQty.getText().isEmpty() ? "0" : itemQty.getText())
             );
 
-            String result = productModel.addProduct(dto);
+            String result = productBO.addProduct(dto);
             new Alert(Alert.AlertType.INFORMATION, result).show();
             loadAllProducts();
             clearFields();
@@ -131,7 +169,7 @@ public class AD_itemsController implements Initializable {
                     Integer.parseInt(itemQty.getText().isEmpty() ? "0" : itemQty.getText())
             );
 
-            String result = productModel.updateProduct(dto);
+            String result = productBO.updateProduct(dto);
             new Alert(Alert.AlertType.INFORMATION, result).show();
             loadAllProducts();
             clearFields();
@@ -153,7 +191,7 @@ public class AD_itemsController implements Initializable {
             Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Delete this product?");
             if (confirm.showAndWait().get() == ButtonType.OK) {
                 int productId = Integer.parseInt(idText);
-                String result = productModel.deleteProduct(productId);  // <-- int pass කළා
+                String result = productBO.deleteProduct(productId);  // <-- int pass කළා
                 new Alert(Alert.AlertType.INFORMATION, result).show();
                 loadAllProducts();
                 clearFields();
@@ -314,7 +352,7 @@ public class AD_itemsController implements Initializable {
     private void handlePrintItem(ActionEvent evnet) {
 
         try {
-            productModel.printReport();
+            productBO.printReport();
 
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Something Went Wrong !").show();

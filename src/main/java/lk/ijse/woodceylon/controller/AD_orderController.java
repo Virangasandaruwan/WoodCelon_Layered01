@@ -11,8 +11,9 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.woodceylon.bo.BOFactory;
 import lk.ijse.woodceylon.bo.custom.CustomerBO;
 import lk.ijse.woodceylon.bo.custom.OrderBO;
+import lk.ijse.woodceylon.bo.custom.ProductBO;
 import lk.ijse.woodceylon.dto.*;
-import lk.ijse.woodceylon.model.ProductModel;
+//import lk.ijse.woodceylon.model.ProductModel;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -65,7 +66,47 @@ public class AD_orderController implements Initializable {
 
         }
     };
-    private final ProductModel productModel = new ProductModel();
+    private final ProductBO productModel = new ProductBO() {
+        @Override
+        public String addProduct(ProductDTO dto) throws Exception {
+            return "";
+        }
+
+        @Override
+        public String updateProduct(ProductDTO dto) throws Exception {
+            return "";
+        }
+
+        @Override
+        public String deleteProduct(int id) throws Exception {
+            return "";
+        }
+
+        @Override
+        public ProductDTO searchProduct(int id) throws Exception {
+            return null;
+        }
+
+        @Override
+        public List<ProductDTO> getAllProducts() throws Exception {
+            return List.of();
+        }
+
+        @Override
+        public void printReport() throws Exception {
+
+        }
+
+        @Override
+        public boolean updateStock(int productId, int qtyChange) throws Exception {
+            return false;
+        }
+
+        @Override
+        public List<ProductDTO> getLowStockItems() throws Exception {
+            return List.of();
+        }
+    };
     private final OrderBO orderBO = (OrderBO) BOFactory.getInstance().getBOFactory(BOFactory.BOTypes.ORDER);
 
     private final ObservableList<OrderItemTM> cartList = FXCollections.observableArrayList();
