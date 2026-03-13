@@ -1,6 +1,8 @@
 package lk.ijse.woodceylon.controller;
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,8 +12,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import lk.ijse.woodceylon.bo.BOFactory;
+import lk.ijse.woodceylon.bo.custom.SupplierBO;
 import lk.ijse.woodceylon.dto.SupplierDTO;
-import lk.ijse.woodceylon.model.SupplierModel;
+import lk.ijse.woodceylon.entity.Supplier;
 
 public class AD_supplierController implements Initializable {
 
@@ -25,7 +29,7 @@ public class AD_supplierController implements Initializable {
     @FXML
     private TableColumn<SupplierDTO, String> colName, colPhone, colAddress, colEmail;
 
-    private final SupplierModel supplierModel = new SupplierModel();
+    private final SupplierBO supplierBO = (SupplierBO) BOFactory.getInstance().getBOFactory(BOFactory.BOTypes.SUPPLIER);
     private final ObservableList<SupplierDTO> supplierList = FXCollections.observableArrayList();
 
     private final String NAME_REGEX = "^[A-Za-z. ]{3,100}$";
@@ -57,7 +61,7 @@ public class AD_supplierController implements Initializable {
     private void loadAllSuppliers() {
         try {
             supplierList.clear();
-            supplierList.addAll(supplierModel.getAllSuppliers());
+            supplierList.addAll(supplierBO.getAllSuppliers());
             tblSupplier.setItems(supplierList);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Failed to load suppliers").show();
@@ -90,7 +94,7 @@ public class AD_supplierController implements Initializable {
                     name, address, phone, email
             );
 
-            String result = supplierModel.addSupplier(dto);
+            String result = supplierBO.addSupplier(dto);
             new Alert(Alert.AlertType.INFORMATION, result).show();
 
             loadAllSuppliers();
@@ -113,7 +117,7 @@ public class AD_supplierController implements Initializable {
                     txtSupplierEmail.getText()
             );
 
-            String result = supplierModel.updateSupplier(dto);
+            String result = supplierBO.updateSupplier(dto);
             new Alert(Alert.AlertType.INFORMATION, result).show();
             loadAllSuppliers();
             clearFields();
@@ -134,7 +138,7 @@ public class AD_supplierController implements Initializable {
         try {
             Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Delete supplier ID: " + idText + "?", ButtonType.YES, ButtonType.NO);
             if (confirm.showAndWait().orElse(ButtonType.NO) == ButtonType.YES) {
-                String result = supplierModel.deleteSupplier(idText);
+                String result = supplierBO.deleteSupplier(Integer.parseInt(idText));
                 new Alert(Alert.AlertType.INFORMATION, result).show();
                 loadAllSuppliers();
                 clearFields();
@@ -154,7 +158,7 @@ public class AD_supplierController implements Initializable {
         }
 
         try {
-            SupplierDTO dto = supplierModel.searchSupplier(idText);
+            SupplierDTO dto = supplierBO.searchSupplier(Integer.parseInt(idText));
             if (dto != null) {
                 txtSupplierName.setText(dto.getSupplierName());
                 txtSupplierPhone.setText(dto.getSupplierPhone());
@@ -188,7 +192,7 @@ public class AD_supplierController implements Initializable {
 
     private void generateNextId() {
         try {
-            int nextId = supplierModel.getNextSupplierId();
+            int nextId = supplierBO.getNextSupplierId();
             txtSupplierId.setText(String.valueOf(nextId));
             txtSupplierId.setEditable(false);
         } catch (Exception e) {
@@ -199,7 +203,7 @@ public class AD_supplierController implements Initializable {
     @FXML
     private void handlePrintSupplier(ActionEvent event) {
         try {
-            supplierModel.printReport();
+            supplierBO.printReport();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Report Generation Failed !").show();
             e.printStackTrace();

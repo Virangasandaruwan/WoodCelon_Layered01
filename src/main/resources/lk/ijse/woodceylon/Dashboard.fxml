@@ -16,9 +16,9 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="780.0" prefWidth="1274.0" style="-fx-background-radius: 25; -fx-border-radius: 25;" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="lk.ijse.woodceylon.controller.DashboardController">
-    <stylesheets>
-        <URL value="@/styles/dashboard.css" />
-    </stylesheets>
+<!--    <stylesheets>-->
+<!--        <URL value="@/styles/dashboard.css" />-->
+<!--    </stylesheets>-->
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="780.0" prefWidth="1274.0" style="-fx-background-radius: 25; -fx-border-radius: 25;">
          <children>

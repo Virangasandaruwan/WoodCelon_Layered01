@@ -3,6 +3,7 @@ package lk.ijse.woodceylon.dao.custom.impl;
 import lk.ijse.woodceylon.dao.custom.EmployeeDAO;
 import lk.ijse.woodceylon.db.DBConnection;
 import lk.ijse.woodceylon.dto.EmployeeDTO;
+import lk.ijse.woodceylon.entity.Employee;
 import lk.ijse.woodceylon.util.CrudUtil;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
@@ -15,26 +16,26 @@ import java.util.ArrayList;
 public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
-    public boolean save(EmployeeDTO dto) throws Exception {
+    public boolean save(Employee employee) throws Exception {
         return CrudUtil.execute(
                 "INSERT INTO Employee (Employee_ID, Name, Phone, Email, Address) VALUES (?,?,?,?,?)",
-                dto.getEmployee_ID(),
-                dto.getName(),
-                dto.getPhone(),
-                dto.getEmail(),
-                dto.getAddress()
+                employee.getEmployee_ID(),
+                employee.getName(),
+                employee.getPhone(),
+                employee.getEmail(),
+                employee.getAddress()
         );
     }
 
     @Override
-    public boolean update(EmployeeDTO dto) throws Exception {
+    public boolean update(Employee employee) throws Exception {
         return CrudUtil.execute(
                 "UPDATE Employee SET Name=?, Phone=?, Email=?, Address=? WHERE Employee_ID=?",
-                dto.getName(),
-                dto.getPhone(),
-                dto.getEmail(),
-                dto.getAddress(),
-                dto.getEmployee_ID()
+                employee.getName(),
+                employee.getPhone(),
+                employee.getEmail(),
+                employee.getAddress(),
+                employee.getEmployee_ID()
         );
     }
 
@@ -53,10 +54,10 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public EmployeeDTO search(Integer id) throws Exception {
+    public Employee search(Integer id) throws Exception {
         ResultSet rst = CrudUtil.execute("SELECT * FROM Employee WHERE Employee_ID=?", id);
         if (rst.next()) {
-            return new EmployeeDTO(
+            return new Employee(
                     rst.getInt("Employee_ID"),
                     rst.getString("Name"),
                     rst.getString("Phone"),
@@ -68,11 +69,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public ArrayList<EmployeeDTO> getAll() throws Exception {
-        ArrayList<EmployeeDTO> list = new ArrayList<>();
+    public ArrayList<Employee> getAll() throws Exception {
+        ArrayList<Employee> list = new ArrayList<>();
         ResultSet rst = CrudUtil.execute("SELECT * FROM Employee");
         while (rst.next()) {
-            list.add(new EmployeeDTO(
+            list.add(new Employee(
                     rst.getInt("Employee_ID"),
                     rst.getString("Name"),
                     rst.getString("Phone"),

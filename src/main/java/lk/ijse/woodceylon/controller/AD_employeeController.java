@@ -1,16 +1,5 @@
 package lk.ijse.woodceylon.controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,52 +8,47 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.woodceylon.App;
-import lk.ijse.woodceylon.db.DBConnection;
+import lk.ijse.woodceylon.bo.BOFactory;
+import lk.ijse.woodceylon.bo.custom.EmployeeBO;
 import lk.ijse.woodceylon.dto.EmployeeDTO;
-import lk.ijse.woodceylon.model.EmployeeModel;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AD_employeeController implements Initializable {
 
-    @FXML
-    private TextField idField;
-    @FXML
-    private TextField nameField;
-    @FXML
-    private TextField contactField;
-    @FXML
-    private TextField emailField;
-    @FXML
-    private TextField addressField;
+    @FXML private TextField idField;
+    @FXML private TextField nameField;
+    @FXML private TextField contactField;
+    @FXML private TextField emailField;
+    @FXML private TextField addressField;
 
-    @FXML
-    private TableView<EmployeeDTO> tblEmployee;
-    @FXML
-    private TableColumn<EmployeeDTO, Integer> colId;
-    @FXML
-    private TableColumn<EmployeeDTO, String> colName;
-    @FXML
-    private TableColumn<EmployeeDTO, String> colPhone;
-    @FXML
-    private TableColumn<EmployeeDTO, String> colEmail;
-    @FXML
-    private TableColumn<EmployeeDTO, String> colAddress;
+    @FXML private TableView<EmployeeDTO> tblEmployee;
+    @FXML private TableColumn<EmployeeDTO, Integer> colId;
+    @FXML private TableColumn<EmployeeDTO, String> colName;
+    @FXML private TableColumn<EmployeeDTO, String> colPhone;
+    @FXML private TableColumn<EmployeeDTO, String> colEmail;
+    @FXML private TableColumn<EmployeeDTO, String> colAddress;
 
-    private final EmployeeModel employeeModel = new EmployeeModel();
+    private final EmployeeBO employeeBO = (EmployeeBO) BOFactory.getInstance()
+            .getBOFactory(BOFactory.BOTypes.EMPLOYEE);
+
     private final ObservableList<EmployeeDTO> employeeList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-      
-        colId.setCellValueFactory(new PropertyValueFactory<>("Employee_ID"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        colPhone.setCellValueFactory(new PropertyValueFactory<>("Phone"));
-        colEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("employee_ID"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
 
         loadAllEmployees();
 
-       
         tblEmployee.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal != null) {
                 idField.setText(String.valueOf(newVal.getEmployee_ID()));
@@ -76,24 +60,28 @@ public class AD_employeeController implements Initializable {
         });
     }
 
-   
     private void loadAllEmployees() {
-
-
         try {
             employeeList.clear();
-            employeeList.addAll(employeeModel.getAllEmployee());
+            ArrayList<EmployeeDTO> allEmployees = employeeBO.getAllEmployees();
+            if (allEmployees != null) {
+                employeeList.addAll(allEmployees);
+            }
             tblEmployee.setItems(employeeList);
         } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, "Failed to load employees").show();
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Failed to load employees: " + e.getMessage()).show();
         }
     }
 
-    
     @FXML
     private void saveEmployee() {
-
         try {
+            if (idField.getText().isEmpty() || nameField.getText().isEmpty()) {
+                new Alert(Alert.AlertType.WARNING, "Employee ID and Name are required!").show();
+                return;
+            }
+
             EmployeeDTO dto = new EmployeeDTO(
                     Integer.parseInt(idField.getText()),
                     nameField.getText(),
@@ -102,21 +90,28 @@ public class AD_employeeController implements Initializable {
                     addressField.getText()
             );
 
-            String result = employeeModel.addEmployee(dto);
+            String result = employeeBO.addEmployee(dto);
             new Alert(Alert.AlertType.INFORMATION, result).show();
 
             loadAllEmployees();
             clearFields();
 
+        } catch (NumberFormatException e) {
+            new Alert(Alert.AlertType.ERROR, "Invalid ID format!").show();
         } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, "Save Failed").show();
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Save Failed: " + e.getMessage()).show();
         }
     }
 
-    
     @FXML
     void updateEmployee(ActionEvent event) {
         try {
+            if (idField.getText().isEmpty()) {
+                new Alert(Alert.AlertType.WARNING, "Select an employee to update!").show();
+                return;
+            }
+
             EmployeeDTO dto = new EmployeeDTO(
                     Integer.parseInt(idField.getText()),
                     nameField.getText(),
@@ -125,39 +120,41 @@ public class AD_employeeController implements Initializable {
                     addressField.getText()
             );
 
-            String result = employeeModel.updateEmployee(dto);
+            String result = employeeBO.updateEmployee(dto);
             new Alert(Alert.AlertType.INFORMATION, result).show();
 
             loadAllEmployees();
             clearFields();
 
         } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, "Update Failed").show();
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Update Failed: " + e.getMessage()).show();
         }
     }
 
-  
     @FXML
     void deleteEmployee(ActionEvent event) {
         try {
+            if (idField.getText().isEmpty()) {
+                new Alert(Alert.AlertType.WARNING, "Select an employee to delete!").show();
+                return;
+            }
+
             Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Delete this employee?");
             if (confirm.showAndWait().get() == ButtonType.OK) {
-
-                EmployeeDTO dto = new EmployeeDTO();
-                dto.setEmployee_ID(Integer.parseInt(idField.getText()));
-
-                String result = employeeModel.deleteEmployee(dto);
+                int employeeId = Integer.parseInt(idField.getText());
+                String result = employeeBO.deleteEmployee(employeeId);
                 new Alert(Alert.AlertType.INFORMATION, result).show();
 
                 loadAllEmployees();
                 clearFields();
             }
         } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, "Delete Failed").show();
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Delete Failed: " + e.getMessage()).show();
         }
     }
 
-    
     @FXML
     void clear(ActionEvent event) {
         clearFields();
@@ -172,7 +169,6 @@ public class AD_employeeController implements Initializable {
         tblEmployee.getSelectionModel().clearSelection();
     }
 
-   
     @FXML
     void handleBackClick() {
         try {
@@ -183,17 +179,13 @@ public class AD_employeeController implements Initializable {
     }
 
     @FXML
-    private void handlePrintEmployee(ActionEvent evnet) {
-
+    private void handlePrintEmployee(ActionEvent event) {
         try {
-            employeeModel.printReport();
-
+            employeeBO.printReport();
+            new Alert(Alert.AlertType.INFORMATION, "Employee Report Generated!").show();
         } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, "Something Went Wrong !").show();
             e.printStackTrace();
-
+            new Alert(Alert.AlertType.ERROR, "Print Failed: " + e.getMessage()).show();
         }
-
     }
-
 }

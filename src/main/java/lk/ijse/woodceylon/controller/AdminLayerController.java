@@ -2,6 +2,7 @@ package lk.ijse.woodceylon.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,8 +23,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import lk.ijse.woodceylon.App;
-import lk.ijse.woodceylon.model.DashboardModel;
-import lk.ijse.woodceylon.model.OrderModel;
+import lk.ijse.woodceylon.bo.custom.OrderBO;
+import lk.ijse.woodceylon.dto.OrderDTO;
+import lk.ijse.woodceylon.dto.OrderDetailsDTO;
+import lk.ijse.woodceylon.dto.ProductDTO;
+
 
 import org.controlsfx.control.Notifications;
 import javafx.util.Duration;
@@ -60,8 +64,198 @@ public class AdminLayerController implements Initializable {
     @FXML
     private Label lblItemsSold;
 
-    private final OrderModel dashboardModel = new OrderModel();
-    private final DashboardModel dashboard_Model = new DashboardModel();
+    private final OrderBO dashboardModel = new OrderBO() {
+        @Override
+        public String addOrder(OrderDTO orderDTO) throws Exception {
+            return "";
+        }
+
+        @Override
+        public String updateOrder(OrderDTO orderDTO) throws Exception {
+            return "";
+        }
+
+        @Override
+        public String deleteOrder(int orderId) throws Exception {
+            return "";
+        }
+
+        @Override
+        public ArrayList<OrderDTO> getAllOrders() throws Exception {
+            return null;
+        }
+
+        @Override
+        public OrderDTO searchOrder(int orderId) throws Exception {
+            return null;
+        }
+
+        @Override
+        public ProductDTO searchProduct(int id) throws Exception {
+            return null;
+        }
+
+        @Override
+        public int placeOrder(OrderDTO orderDTO) throws Exception {
+            return 0;
+        }
+
+        @Override
+        public ArrayList<OrderDetailsDTO> getAllOrderDetails() throws Exception {
+            return null;
+        }
+
+        @Override
+        public void printReport() throws Exception {
+
+        }
+
+        @Override
+        public double getTotalEarnings() throws Exception {
+            return 0;
+        }
+
+        @Override
+        public int getTotalItemsSold() throws Exception {
+            return 0;
+        }
+
+        @Override
+        public String getTopSellingItem() throws Exception {
+            return "";
+        }
+
+        @Override
+        public int getTotalCustomers() throws Exception {
+            return 0;
+        }
+
+        @Override
+        public int getTotalSuppliers() throws Exception {
+            return 0;
+        }
+
+        @Override
+        public ArrayList<OrderDTO> getAllOrdersGrouped() throws Exception {
+            return null;
+        }
+
+        @Override
+        public ArrayList<OrderDetailsDTO> getOrderItemsByOrderId(int orderId) throws Exception {
+            return null;
+        }
+
+        @Override
+        public boolean cancelOrder(int orderId, int productId, int qty) throws Exception {
+            return false;
+        }
+
+        @Override
+        public ObservableList<String> getLowStockItems() {
+            return null;
+        }
+
+        @Override
+        public ObservableList<PieChart.Data> getPieChartData() {
+            return null;
+        }
+    };
+    private final OrderBO dashboard_Model = new OrderBO() {
+        @Override
+        public String addOrder(OrderDTO orderDTO) throws Exception {
+            return "";
+        }
+
+        @Override
+        public String updateOrder(OrderDTO orderDTO) throws Exception {
+            return "";
+        }
+
+        @Override
+        public String deleteOrder(int orderId) throws Exception {
+            return "";
+        }
+
+        @Override
+        public ArrayList<OrderDTO> getAllOrders() throws Exception {
+            return null;
+        }
+
+        @Override
+        public OrderDTO searchOrder(int orderId) throws Exception {
+            return null;
+        }
+
+        @Override
+        public ProductDTO searchProduct(int id) throws Exception {
+            return null;
+        }
+
+        @Override
+        public int placeOrder(OrderDTO orderDTO) throws Exception {
+            return 0;
+        }
+
+        @Override
+        public ArrayList<OrderDetailsDTO> getAllOrderDetails() throws Exception {
+            return null;
+        }
+
+        @Override
+        public void printReport() throws Exception {
+
+        }
+
+        @Override
+        public double getTotalEarnings() throws Exception {
+            return 0;
+        }
+
+        @Override
+        public int getTotalItemsSold() throws Exception {
+            return 0;
+        }
+
+        @Override
+        public String getTopSellingItem() throws Exception {
+            return "";
+        }
+
+        @Override
+        public int getTotalCustomers() throws Exception {
+            return 0;
+        }
+
+        @Override
+        public int getTotalSuppliers() throws Exception {
+            return 0;
+        }
+
+        @Override
+        public ArrayList<OrderDTO> getAllOrdersGrouped() throws Exception {
+            return null;
+        }
+
+        @Override
+        public ArrayList<OrderDetailsDTO> getOrderItemsByOrderId(int orderId) throws Exception {
+            return null;
+        }
+
+        @Override
+        public boolean cancelOrder(int orderId, int productId, int qty) throws Exception {
+            return false;
+        }
+
+        @Override
+        public ObservableList<String> getLowStockItems() {
+            return null;
+        }
+
+        @Override
+        public ObservableList<PieChart.Data> getPieChartData() {
+            return null;
+        }
+    };
 
     @FXML
     private Label lblTopItem;

@@ -3,6 +3,7 @@ package lk.ijse.woodceylon.bo.custom.impl;
 import lk.ijse.woodceylon.bo.custom.SupplierBO;
 import lk.ijse.woodceylon.dao.DAOFactory;
 import lk.ijse.woodceylon.dao.custom.SupplierDAO;
+import lk.ijse.woodceylon.dto.SupplierDTO;
 import lk.ijse.woodceylon.entity.Supplier;
 
 import java.util.ArrayList;
@@ -13,13 +14,27 @@ public class SupplierBOImpl implements SupplierBO {
             (SupplierDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.SUPPLIER);
 
     @Override
-    public String addSupplier(Supplier supplier) throws Exception {
+    public String addSupplier(SupplierDTO dto) throws Exception {
+        Supplier supplier = new Supplier(
+                dto.getSupplierId(),
+                dto.getSupplierName(),
+                dto.getSupplierAddress(),
+                dto.getSupplierPhone(),
+                dto.getSupplierEmail()
+        );
         boolean added = supplierDAO.save(supplier);
         return added ? "Supplier Saved Successfully" : "Supplier Save Failed";
     }
 
     @Override
-    public String updateSupplier(Supplier supplier) throws Exception {
+    public String updateSupplier(SupplierDTO dto) throws Exception {
+        Supplier supplier = new Supplier(
+                dto.getSupplierId(),
+                dto.getSupplierName(),
+                dto.getSupplierAddress(),
+                dto.getSupplierPhone(),
+                dto.getSupplierEmail()
+        );
         boolean updated = supplierDAO.update(supplier);
         return updated ? "Supplier Updated Successfully" : "Supplier Update Failed";
     }
@@ -31,13 +46,34 @@ public class SupplierBOImpl implements SupplierBO {
     }
 
     @Override
-    public Supplier searchSupplier(int supplierId) throws Exception {
-        return supplierDAO.search(supplierId);
+    public SupplierDTO searchSupplier(int supplierId) throws Exception {
+        Supplier s = supplierDAO.search(supplierId);
+        if (s != null) {
+            return new SupplierDTO(
+                    s.getSupplierId(),
+                    s.getName(),
+                    s.getPhone(),
+                    s.getEmail(),
+                    s.getAddress()
+            );
+        }
+        return null;
     }
 
     @Override
-    public ArrayList<Supplier> getAllSuppliers() throws Exception {
-        return supplierDAO.getAll();
+    public ArrayList<SupplierDTO> getAllSuppliers() throws Exception {
+        ArrayList<Supplier> entities = supplierDAO.getAll();
+        ArrayList<SupplierDTO> supplierDTOs = new ArrayList<>();
+        for (Supplier s : entities) {
+            supplierDTOs.add(new SupplierDTO(
+                    s.getSupplierId(),
+                    s.getName(),
+                    s.getPhone(),
+                    s.getEmail(),
+                    s.getAddress()
+            ));
+        }
+        return supplierDTOs;
     }
 
     @Override

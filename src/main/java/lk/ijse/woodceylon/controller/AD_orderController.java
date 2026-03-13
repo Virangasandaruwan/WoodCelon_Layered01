@@ -9,9 +9,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.woodceylon.bo.BOFactory;
+import lk.ijse.woodceylon.bo.custom.CustomerBO;
 import lk.ijse.woodceylon.bo.custom.OrderBO;
 import lk.ijse.woodceylon.dto.*;
-import lk.ijse.woodceylon.model.CustomerModel;
 import lk.ijse.woodceylon.model.ProductModel;
 
 import java.net.URL;
@@ -29,12 +29,45 @@ public class AD_orderController implements Initializable {
     @FXML
     private AnchorPane AD_order;
 
-    // Models
-    private final CustomerModel customerModel = new CustomerModel();
+    private final CustomerBO customerModel = new CustomerBO() {
+        @Override
+        public String addCustomer(CustomerDTO dto) throws Exception {
+            return "";
+        }
+
+        @Override
+        public String updateCustomer(CustomerDTO dto) throws Exception {
+            return "";
+        }
+
+        @Override
+        public String deleteCustomer(int customerId) throws Exception {
+            return "";
+        }
+
+        @Override
+        public ArrayList<CustomerDTO> getAllCustomers() throws Exception {
+            return null;
+        }
+
+        @Override
+        public CustomerDTO searchCustomer(int customerId) throws Exception {
+            return null;
+        }
+
+        @Override
+        public int getNextCustomerId() throws Exception {
+            return 0;
+        }
+
+        @Override
+        public void printCustomerReport() throws Exception {
+
+        }
+    };
     private final ProductModel productModel = new ProductModel();
     private final OrderBO orderBO = (OrderBO) BOFactory.getInstance().getBOFactory(BOFactory.BOTypes.ORDER);
 
-    // Cart
     private final ObservableList<OrderItemTM> cartList = FXCollections.observableArrayList();
 
     @FXML private ComboBox<Integer> comboCustomerId;
@@ -69,24 +102,24 @@ public class AD_orderController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        // Cart table columns
+
         colItemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("itemPrice"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
         colTotalPrice.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
 
-        // All orders table columns (camelCase)
+
         colOrderId.setCellValueFactory(new PropertyValueFactory<>("orderId"));
         colCustId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
 
-        // Double-click row to show order items popup
+
         tblAllDetails.setRowFactory(tv -> {
             TableRow<OrderDTO> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     OrderDTO selectedOrder = row.getItem();
-                    showOrderItemsPopup(selectedOrder.getOrderId());  // ← fixed: getOrderId()
+                    showOrderItemsPopup(selectedOrder.getOrderId());
                 }
             });
             return row;
@@ -123,7 +156,7 @@ public class AD_orderController implements Initializable {
 
     private void loadCustomerIds() {
         try {
-            List<CustomerDTO> customers = customerModel.getAllCustomer();
+            List<CustomerDTO> customers = customerModel.getAllCustomers();
             ObservableList<Integer> ids = FXCollections.observableArrayList();
             for (CustomerDTO c : customers) {
                 ids.add(c.getCustomerId());
@@ -381,7 +414,6 @@ public class AD_orderController implements Initializable {
 
     private void loadFullOrderTable() {
         try {
-            // Fixed column mappings - camelCase
             colOrderId.setCellValueFactory(new PropertyValueFactory<>("orderId"));
             colCustId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
             colDate.setCellValueFactory(new PropertyValueFactory<>("orderDate"));

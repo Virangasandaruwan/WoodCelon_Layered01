@@ -30,4 +30,7 @@ public interface OrderBO extends SuperBO {
     ArrayList<OrderDetailsDTO> getOrderItemsByOrderId(int orderId) throws Exception;
     boolean cancelOrder(int orderId, int productId, int qty) throws Exception;
 
+    ObservableList<String> getLowStockItems() throws Exception;
+
+    ObservableList<PieChart.Data> getPieChartData() throws Exception;
 }
